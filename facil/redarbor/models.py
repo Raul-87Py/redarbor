@@ -29,16 +29,16 @@ class Employee(db.Model):
  
 
     def __init__(self, dict):
-        self.Email = dict.get('email', '')
-        self.Fax = dict.get('fax', '')
-        self.Name = dict.get('name', '')
-        self.Telephone = dict.get('telephone', '')
-        self.Username = dict.get('username', '')
-        self.Password = dict.get('password', '')
-        self.CompanyId = dict.get('companyId')
-        self.PortalId = dict.get('portalId', '')
-        self.RoleId = dict.get('roleId', '')
-        self.StatusId = dict.get('statusId', '')
+        self.Email = dict.get('Email', '')
+        self.Fax = dict.get('Fax', '')
+        self.Name = dict.get('Name', '')
+        self.Telephone = dict.get('Telephone', '')
+        self.Username = dict.get('Username', '')
+        self.Password = dict.get('Password', '')
+        self.CompanyId = dict.get('CompanyId')
+        self.PortalId = dict.get('PortalId', '')
+        self.RoleId = dict.get('RoleId', '')
+        self.StatusId = dict.get('StatusId', '')
         
     def save(self):
         if not self.id:
@@ -55,8 +55,16 @@ class Employee(db.Model):
 
     @staticmethod
     def update_by_id(id, dict):
-        db.session.update(id).values(dict)
+        dict['UpdatedOn'] = db.func.current_timestamp()
+
+        Employee.query.filter_by(id = int(id)).update(dict)
+        # db.session.update(id).values(dict)
         # query = db.update(emp).values(salary = 100000)
         db.session.commit()
         # return Employee.query.get(id)
+    @staticmethod
+    def delete_by_id(id):
+        
+        Employee.query.filter_by(id = int(id)).delete()
+        db.session.commit()
         
