@@ -11,15 +11,24 @@ def server_info():
 
 @app.route("/cuentas/", endpoint="nueva_cuenta", methods=["POST"])
 def new_account():
-    email = request.form.get('email')
-    name = request.form.get('name')
+    # email = request.form.get('email')
+    # name = request.form.get('name')
     # json = request.get_json()
     # print(json)
     # email = json.get("email")
     # name = json.get("name")
-    print('poop',dict(request.form),'pop')
-    new_user = Employee(dict(request.form))
-    new_user.insert()
+    new_user = Employee()
+    new_user.Email = request.form.get('email', '')
+    new_user.Fax = request.form.get('fax', '')
+    new_user.Name = request.form.get('name', '')
+    new_user.Telephone = request.form.get('telephone', '')
+    new_user.Username = request.form.get('username', '')
+    new_user.Password = request.form.get('password', '')
+    new_user.CompanyId = request.form.get('companyId')
+    new_user.PortalId = request.form.get('portalId', '')
+    new_user.RoleId = request.form.get('roleId', '')
+    new_user.StatusId = request.form.get('statusId', '')
+    new_user.save()
 
     
     
