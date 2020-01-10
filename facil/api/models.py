@@ -1,7 +1,6 @@
 from datetime import datetime
 from . import db
 
-db.create_all()
 class Employee(db.Model):
     __tablename__ = 'employee'
     id = db.Column(db.Integer, primary_key=True)
@@ -55,16 +54,17 @@ class Employee(db.Model):
 
     @staticmethod
     def update_by_id(id, dict):
-        dict['UpdatedOn'] = db.func.current_timestamp()
+        try:
+            dict['UpdatedOn'] = db.func.current_timestamp()
+            Employee.query.filter_by(id = int(id)).update(dict)
+            db.session.commit()
+            data = 
+        except Exception as e:
+            data = e
 
-        Employee.query.filter_by(id = int(id)).update(dict)
-        # db.session.update(id).values(dict)
-        # query = db.update(emp).values(salary = 100000)
-        db.session.commit()
-        # return Employee.query.get(id)
+        return Employee.query.get(id)
     @staticmethod
     def delete_by_id(id):
-        
         Employee.query.filter_by(id = int(id)).delete()
         db.session.commit()
         

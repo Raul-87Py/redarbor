@@ -1,14 +1,11 @@
 from .models import Employee
 from . import app
-from flask import request, jsonify
+
+from flask import request
+from flask import jsonify, make_response
+
+
  
-
-@app.route("/")
-def server_info():
-    return jsonify({
-        "server": "My API"
-    })
-
 @app.route("/api/redarbor/", methods=["POST"])
 def new_account():
     """add new user
@@ -18,14 +15,17 @@ def new_account():
     """
     new_user = Employee(dict(request.form))
     new_user.save()
-    return jsonify({"id": new_user.id}), 201
+    data = {'message': 'Created', 'code': 'SUCCESS', "id": new_user.id }
+    return make_response(jsonify(data), 200)
+
 
 @app.route("/api/redarbor/", methods=["GET"])
 def list_exployeers():
     employee = Employee.get_all()
-    return jsonify({
+    data = {
         "Employeers": [{"id": x.id, "Name": x.Name, "Email": x.Email} for x in employee]
-    })
+    }
+    return make_response(jsonify(data), 400)
 
 @app.route("/api/redarbor/<id>", methods=["GET"])
 def one_exployee(id):
@@ -38,10 +38,10 @@ def one_exployee(id):
 def update_exployee(id):
     new_values = dict(request.form)
     employee = Employee.update_by_id(id, new_values)
-    #TODO return ok 200
+    return jsonify(success=True)
 
 @app.route("/api/redarbor/<id>", methods=["DELETE"])
 def delete_exployee(id):
     #TODO return ok 200
     employee = Employee.delete_by_id(id)
-    # return jsonify('200')
+    return jsonify(success=False)
