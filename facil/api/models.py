@@ -1,5 +1,7 @@
 from datetime import datetime
+
 from . import db
+from .utilities import response_helper
 
 class Employee(db.Model):
     __tablename__ = 'employee'
@@ -12,7 +14,7 @@ class Employee(db.Model):
 
     # metadata
     CreatedOn = db.Column(db.DateTime(), nullable=True, default=db.func.current_timestamp())
-    UpdatedOn = db.Column(db.DateTime(), nullable=True, default=db.func.current_timestamp())
+    UpdatedOn = db.Column(db.DateTime(), nullable=True, onupdate=db.func.current_timestamp())
     DeletedOn = db.Column(db.DateTime(), nullable=True, default=db.func.current_timestamp())
     Lastlogin = db.Column(db.DateTime(), nullable=True, default=db.func.current_timestamp())
 
@@ -25,7 +27,6 @@ class Employee(db.Model):
     PortalId = db.Column(db.Integer, nullable=False)
     RoleId = db.Column(db.Integer, nullable=False)
     StatusId = db.Column(db.Integer, nullable=False)
- 
 
     def __init__(self, dict):
         self.Email = dict.get('Email', '')
@@ -39,7 +40,7 @@ class Employee(db.Model):
         self.RoleId = dict.get('RoleId', '')
         self.StatusId = dict.get('StatusId', '')
         
-    def save(self):
+    def add(self):
         if not self.id:
             db.session.add(self)
         db.session.commit()
@@ -55,16 +56,18 @@ class Employee(db.Model):
     @staticmethod
     def update_by_id(id, dict):
         try:
-            dict['UpdatedOn'] = db.func.current_timestamp()
             Employee.query.filter_by(id = int(id)).update(dict)
-            db.session.commit()
-            data = 
+            db.session.commit() 
+            response = response_helper(True, msg="SUCCES")
+            
         except Exception as e:
-            data = e
+            response = response_helper(False, msg="ERROR", error=str(e))
 
-        return Employee.query.get(id)
+        return response
+
     @staticmethod
     def delete_by_id(id):
         Employee.query.filter_by(id = int(id)).delete()
         db.session.commit()
-        
+
+    
