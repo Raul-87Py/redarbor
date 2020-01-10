@@ -1,7 +1,8 @@
 from .models import Employee
 from . import app
+from flask import request, jsonify
+ 
 
-print('poopiouoiytoyutuy',app.__name__)
 @app.route("/")
 def server_info():
     return jsonify({
@@ -18,8 +19,8 @@ def new_account():
     # name = json.get("name")
     print('poop',dict(request.form),'pop')
     new_user = Employee(dict(request.form))
-    new_user.name = name
-    new_user.email = email
+    new_user.insert()
+
     
     
 

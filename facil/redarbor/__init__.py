@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from flask import request
+
 
 app = Flask(__name__)
 #postgresql://<nombre_usuario>:<password>@<host>:<puerto>/<nombre_basededatos>
