@@ -37,10 +37,10 @@ def new_account():
 
 @app.route("/cuentas/", endpoint="lista_cuentas", methods=["GET"])
 def list_cuentas():
-    cuentas = Cuenta.query.order_by(Cuenta.id).all()
+    employee = Employee.query.order_by(Employee.id).all()
 
     return jsonify({
-        "items": [{"id": x.id, "name": x.name, "email": x.email} for x in cuentas]
+        "items": [{"id": x.id, "Name": x.Name, "Email": x.Email} for x in employee]
     })
 
 
