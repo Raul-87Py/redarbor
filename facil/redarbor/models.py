@@ -44,9 +44,19 @@ class Employee(db.Model):
         if not self.id:
             db.session.add(self)
         db.session.commit()
+
+    @staticmethod
+    def get_all():
+        return Employee.query.order_by(Employee.id).all()
+
     @staticmethod
     def get_by_id(id):
-        return User.query.get(id)
+        return Employee.query.get(id)
+
     @staticmethod
-    def get_by_email(email):
-        return User.query.filter_by(email=email).first()
+    def update_by_id(id, dict):
+        db.session.update(id).values(dict)
+        # query = db.update(emp).values(salary = 100000)
+        db.session.commit()
+        # return Employee.query.get(id)
+        

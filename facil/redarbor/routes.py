@@ -9,7 +9,7 @@ def server_info():
         "server": "My API"
     })
 
-@app.route("/cuentas/", endpoint="nueva_cuenta", methods=["POST"])
+@app.route("/api/redarbor/", methods=["POST"])
 def new_account():
     # email = request.form.get('email')
     # name = request.form.get('name')
@@ -35,12 +35,25 @@ def new_account():
 
     return jsonify({"id": new_user.id}), 201
 
-@app.route("/cuentas/", endpoint="lista_cuentas", methods=["GET"])
-def list_cuentas():
-    employee = Employee.query.order_by(Employee.id).all()
+@app.route("/api/redarbor/", methods=["GET"])
+def list_exployeers():
+    employee = Employee.get_all()
 
     return jsonify({
-        "items": [{"id": x.id, "Name": x.Name, "Email": x.Email} for x in employee]
+        "Employeers": [{"id": x.id, "Name": x.Name, "Email": x.Email} for x in employee]
     })
 
+@app.route("/api/redarbor/<id>", methods=["GET"])
+def one_exployee(id):
+    employee = Employee.get_by_id(id)
+    return jsonify({
+        "item": {"id": employee.id, "Name": employee.Name, "Email": employee.Email}
+    })
 
+@app.route("/api/redarbor/<id>", methods=["PUT"])
+def update_exployee(id):
+    new_values = dict(request.form)
+    employee = Employee.query.get(id)
+    return jsonify({
+        "item": {"id": employee.id, "Name": employee.Name, "Email": employee.Email}
+    })
