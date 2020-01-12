@@ -1,0 +1,41 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8.0.18
+    ports:
+      - 33060:3306
+    volumes:
+      - mysql-db-data:/var/lib/mysql
+      
+    environment: 
+      MYSQL_ROOT_PASSWORD: 'siyu7e'
+      MYSQL_USER: 'redarbor'
+      MYSQL_PASSWORD: '9oi76gA'
+      MYSQL_DATABASE: 'redarbor_employeers'
+    container_name: mysql-db
+    networks: [pystack]
+
+  api:
+    build: .
+    links:
+      [mysql]
+    volumes:
+      - api-logs:api/logs/app.log
+    ports:
+    - 3700:3700
+    container_name: redarbor_app
+    networks: [pystack]
+
+networks:
+  pystack:
+
+  
+volumes:
+  mysql-db-data:
+  api-logs:
+  
+  
+
+
+
+

@@ -1,0 +1,15 @@
+2020-01-12 17:35:06,624 INFO werkzeug :  * Restarting with stat
+2020-01-12 17:35:07,229 WARNING werkzeug :  * Debugger is active!
+2020-01-12 17:35:07,232 INFO werkzeug :  * Debugger PIN: 210-943-525
+2020-01-12 17:35:07,238 INFO werkzeug :  * Running on http://127.0.0.1:3700/ (Press CTRL+C to quit)
+2020-01-12 17:57:12,362 INFO werkzeug :  * Restarting with stat
+2020-01-12 17:57:12,995 WARNING werkzeug :  * Debugger is active!
+2020-01-12 17:57:13,001 INFO werkzeug :  * Debugger PIN: 210-943-525
+2020-01-12 17:57:13,009 INFO werkzeug :  * Running on http://127.0.0.1:3700/ (Press CTRL+C to quit)
+2020-01-12 18:01:15,589 ERROR api : (MySQLdb._exceptions.OperationalError) (2013, 'Lost connection to MySQL server during query')
+[SQL: SELECT employee.id AS employee_id, employee.`Email` AS `employee_Email`, employee.`Fax` AS `employee_Fax`, employee.`Name` AS `employee_Name`, employee.`Telephone` AS `employee_Telephone`, employee.`CreatedOn` AS `employee_CreatedOn`, employee.`UpdatedOn` AS `employee_UpdatedOn`, employee.`DeletedOn` AS `employee_DeletedOn`, employee.`Lastlogin` AS `employee_Lastlogin`, employee.`Username` AS `employee_Username`, employee.`Password` AS `employee_Password`, employee.`CompanyId` AS `employee_CompanyId`, employee.`PortalId` AS `employee_PortalId`, employee.`RoleId` AS `employee_RoleId`, employee.`StatusId` AS `employee_StatusId` 
+FROM employee ORDER BY employee.id]
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2020-01-12 18:01:15,590 INFO werkzeug : 127.0.0.1 - - [12/Jan/2020 18:01:15] "GET /api/redarbor/ HTTP/1.1" 400 -
+2020-01-12 18:11:25,699 ERROR api : (MySQLdb._exceptions.OperationalError) (2002, "Can't connect to MySQL server on '127.0.0.1' (10061)")
+(Background on this error at: http://sqlalche.me/e/e3q8)
