@@ -20,7 +20,6 @@ def response_helper(result=True, msg="", error="", data={}, error_code=400):
     #     raise TypeError
 
     if not isinstance(error, str) and not isinstance(error, bool):
-        print ('--',error,'--',isinstance(error, str))
         raise TypeError
 
     if not isinstance(error_code, int):
@@ -34,6 +33,7 @@ def response_helper(result=True, msg="", error="", data={}, error_code=400):
             {
                 "result": result,
                 "error": error,
+                "msg": msg,
                 "data": data
             }
         ), 200
@@ -42,6 +42,7 @@ def response_helper(result=True, msg="", error="", data={}, error_code=400):
             {
                 "result": result,
                 "error": error,
+                "msg": msg,
                 "data": data
             }
         ), error_code

@@ -8,3 +8,9 @@ class p():
         self.p = 'o'
 pp=p()
 print(pp.__dict__)
+
+try:
+    a=4
+    d=filtert
+except:
+    print(a)
