@@ -1,17 +1,20 @@
-FROM python:3.6-alpine
+FROM python:3.6
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 
-ENV PYTHONIOENCODING=UTF-8
+RUN apt-get update \
+    && apt-get install -y \
+        vim
 
-COPY  ./employees .
+COPY  ./employees ./employees
 
-WORKDIR ./
+WORKDIR ./employees
 
 ENTRYPOINT ["python"]
 
-EXPOSE 3700
+EXPOSE 5000
 
-CMD ["run.py"]
+#CMD [ "python", "./run.py" ]
+#CMD ["run.py"]

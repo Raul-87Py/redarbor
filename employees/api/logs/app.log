@@ -13,3 +13,22 @@ FROM employee ORDER BY employee.id]
 2020-01-12 18:01:15,590 INFO werkzeug : 127.0.0.1 - - [12/Jan/2020 18:01:15] "GET /api/redarbor/ HTTP/1.1" 400 -
 2020-01-12 18:11:25,699 ERROR api : (MySQLdb._exceptions.OperationalError) (2002, "Can't connect to MySQL server on '127.0.0.1' (10061)")
 (Background on this error at: http://sqlalche.me/e/e3q8)
+2020-01-12 18:57:09,404 INFO werkzeug :  * Restarting with stat
+2020-01-12 18:57:10,058 WARNING werkzeug :  * Debugger is active!
+2020-01-12 18:57:10,063 INFO werkzeug :  * Debugger PIN: 210-943-525
+2020-01-12 18:57:10,070 INFO werkzeug :  * Running on http://127.0.0.1:3700/ (Press CTRL+C to quit)
+2020-01-12 18:57:22,943 INFO werkzeug : 127.0.0.1 - - [12/Jan/2020 18:57:22] "GET /api/redarbor/ HTTP/1.1" 200 -
+2020-01-12 18:57:29,371 INFO werkzeug : 127.0.0.1 - - [12/Jan/2020 18:57:29] "GET /api/redarbor/ HTTP/1.1" 200 -
+2020-01-12 18:57:37,168 INFO werkzeug : 127.0.0.1 - - [12/Jan/2020 18:57:37] "POST /api/redarbor/ HTTP/1.1" 200 -
+2020-01-12 18:57:38,917 INFO werkzeug : 127.0.0.1 - - [12/Jan/2020 18:57:38] "GET /api/redarbor/ HTTP/1.1" 200 -
+2020-01-12 19:02:47,542 INFO werkzeug :  * Restarting with stat
+2020-01-12 19:02:48,167 WARNING werkzeug :  * Debugger is active!
+2020-01-12 19:02:48,171 INFO werkzeug :  * Debugger PIN: 210-943-525
+2020-01-12 19:02:48,180 INFO werkzeug :  * Running on http://0.0.0.0:3700/ (Press CTRL+C to quit)
+2020-01-12 19:02:50,770 INFO werkzeug : 127.0.0.1 - - [12/Jan/2020 19:02:50] "GET /api/redarbor/ HTTP/1.1" 200 -
+2020-01-12 19:02:55,600 INFO werkzeug : 127.0.0.1 - - [12/Jan/2020 19:02:55] "GET /api/redarbor/2 HTTP/1.1" 200 -
+2020-01-12 19:41:33,592 INFO werkzeug :  * Restarting with stat
+2020-01-12 19:41:34,182 WARNING werkzeug :  * Debugger is active!
+2020-01-12 19:41:34,186 INFO werkzeug :  * Debugger PIN: 210-943-525
+2020-01-12 19:41:34,203 INFO werkzeug :  * Running on http://0.0.0.0:3700/ (Press CTRL+C to quit)
+2020-01-12 19:41:36,567 INFO werkzeug : 127.0.0.1 - - [12/Jan/2020 19:41:36] "GET /api/redarbor/ HTTP/1.1" 200 -

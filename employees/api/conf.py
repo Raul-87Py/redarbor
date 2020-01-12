@@ -1,7 +1,7 @@
 # DB
 db_conf = { 
     'db' : 'mysql',
-    'host' : 'db',
+    'host' : 'mysql',
     'puerto' : '33060',
     'mysql_database' : 'redarbor_employeers',
     'login': { 
@@ -26,5 +26,5 @@ SQLALCHEMY_DATABASE_URI = "{}://{}:{}@{}:{}/{}".format(
 
 # APP
 
-HOST = '127.0.0.1'
+HOST = '0.0.0.0'
 PORT = 3700

@@ -19,12 +19,12 @@ services:
     build: .
     links:
       [mysql]
-    volumes:
-      - api-logs:api/logs/app.log
+
     ports:
     - 3700:3700
     container_name: redarbor_app
     networks: [pystack]
+
 
 networks:
   pystack:
@@ -32,7 +32,8 @@ networks:
   
 volumes:
   mysql-db-data:
-  api-logs:
+
+
   
   
 
